@@ -78,7 +78,56 @@ public class LinkedList extends AbstractList {
         }
         return false;
     }
+  /*  public boolean delete(int index) throws IndexOutOfBoundsException {
+        Element inserted =_first;
+        if(index == 0 )
+        {
+            return false;
+        }
+        if (_first == null) {
+            return false;
 
+        }
+        if (indexOf(_first) == index) {
+            _first = (e);
+            _size++;
+            return true;
+        }
+        if (index < 0 || index > _size) throw new IndexOutOfBoundsException();
+        while (inserted != null & inserted.getNext() != null)
+        {
+            if (indexOf(inserted.getNext()) == index) {
+                Element next = inserted._next;
+                inserted._next = e;
+                e._next = next;
+                _size++;
+                return true;
+            }
+            inserted = inserted.getNext();
+        }
+        if (_first == null) {
+            return false;
+        }
+        Element e = _first;
+        if (e.getValue().equals(value)) {
+            e = e.getNext();
+            _size--;
+            return true;
+        }
+        Element usuniety = _first;
+        while (usuniety != null & usuniety.getNext() != null) {
+            if (indexOf(usuniety.getNext()).equals(index)) {
+                usuniety.setNext(usuniety.getNext().getNext());
+                _size--;
+                return true;
+            }
+            usuniety = usuniety.getNext();
+        }
+
+        return false;
+        return false;
+    }
+*/
 
     public void printList()
     {

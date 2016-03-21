@@ -5,8 +5,6 @@
 
 public class BlockingTableQueue implements  Queue
 {
-   // private final Object _mutex = new Object();
-   // private final Queue _queue = null;
 
     private  Object [] tab = new Object[0];
     private  int _maxSize = 0;
@@ -40,7 +38,9 @@ public class BlockingTableQueue implements  Queue
 
             if (tab.length>_maxSize)
             {
-                System.out.println("Nie ma wystarczajaco miejsca w tablicy/kolejce");
+
+                throw new FullQueueException(  "Queue is full. Please wait" );
+
             }
             else
             {
@@ -53,8 +53,7 @@ public class BlockingTableQueue implements  Queue
                     }
                 }
 
-              //  System.out.println(value);
-            }
+                }
     }
 
     public Object dequeue() throws EmptyQueueException
@@ -63,14 +62,16 @@ public class BlockingTableQueue implements  Queue
         if(tab.length == 0)
             {
                 System.out.println("Kolejka pusta");
-                return -1;
+                throw new EmptyQueueException();
+
             }
         else{
             value = tab[0];
-            for(int i = 0; i <tab.length; i++)
+            for(int i = 0; i <tab.length-1; i++)
             {
-
-                    tab[i] = tab[i+1];
+                    Object temp =  tab[i+1];
+                    tab[i] = temp;
+                    //temp = tab[i];
             }
            return  value;
             }
@@ -97,6 +98,7 @@ public class BlockingTableQueue implements  Queue
     {
         for(int i = 0; i <tab.length; i++)
         {
+            if(tab[i]!=null)
             System.out.println(tab[i]);
 
         }
